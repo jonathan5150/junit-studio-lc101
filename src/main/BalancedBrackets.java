@@ -23,13 +23,61 @@ public class BalancedBrackets {
      */
     public static boolean hasBalancedBrackets(String str) {
         int brackets = 0;
+//        for (char ch : str.toCharArray()) {
+//            if (ch == '[') {
+//                brackets++;
+//            } else if (ch == ']') {
+//                brackets--;
+//            }
+//        }
+
+        int leftBracket = 0;
+        int rightBracket = 0;
+
+        //[LaunchCode[HI]] WORKS
+        //][ NOW FAILS CORRECTLY
+
         for (char ch : str.toCharArray()) {
             if (ch == '[') {
-                brackets++;
-            } else if (ch == ']') {
-                brackets--;
+                leftBracket++;
+            }
+            if (ch == ']') {
+                rightBracket++;
+            }
+            if (rightBracket > leftBracket) {
+                return false;
+            }
+
+        }
+        //leftBracket = 1
+
+        int temp = 0;
+
+        for (char ch : str.toCharArray()) {
+            if (temp == leftBracket) {
+                if (ch == '[') {
+                    return false;
+                }
+
+            }
+            if (ch == '[') {
+                temp++;
             }
         }
-        return brackets == 0;
+
+        return true;
     }
 }
+
+//    int left = 0;
+//    int right = 0;
+
+//[LaunchCode[HI]]
+
+//        for (char ch : str.toCharArray()) {
+//                if (ch == '[') {
+//                left++;
+//                } else if (ch == ']') {
+//                right++;
+//                }
+//                }
